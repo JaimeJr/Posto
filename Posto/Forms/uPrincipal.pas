@@ -5,16 +5,31 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Data.Win.ADODB,
-  Vcl.StdCtrls, Vcl.ExtCtrls;
+  Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls;
 
 type
   TfrmPosto = class(TForm)
     pnlFundo: TPanel;
-    Button2: TButton;
-    btnAbastecerT1B1: TButton;
-    btnAbastecerT1B2: TButton;
-    Button3: TButton;
+    pnlGasolina: TPanel;
+    pnlRelatorio: TPanel;
     btnRelatorio: TButton;
+    edtPrecoLitro: TLabeledEdit;
+    Panel4: TPanel;
+    Panel3: TPanel;
+    btnAbastecerT1B2: TButton;
+    pnlBomba2: TPanel;
+    btnAbastecerT1B1: TButton;
+    LabeledEdit1: TLabeledEdit;
+    LabeledEdit2: TLabeledEdit;
+    pnlOleoDiesel: TPanel;
+    LabeledEdit3: TLabeledEdit;
+    Panel2: TPanel;
+    Panel5: TPanel;
+    Button1: TButton;
+    LabeledEdit4: TLabeledEdit;
+    Panel6: TPanel;
+    Button2: TButton;
+    LabeledEdit5: TLabeledEdit;
   private
     { Private declarations }
   public
