@@ -102,6 +102,10 @@
             <Form>Form1</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Interfaces\uiTipoCombustivel.pas"/>
+        <DCCReference Include="Interfaces\uiTanque.pas"/>
+        <DCCReference Include="Interfaces\uiBomba.pas"/>
+        <DCCReference Include="Classes\uAbastecer.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

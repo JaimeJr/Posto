@@ -9,8 +9,8 @@ interface
     function Descricao(value : string) : ITipoCombustivel; overload;
     function Descricao : string; overload;
 
-    function ValorLitro(value : Extended) : ITipoCombustivel; overload;
-    function ValorLitro : Extended; overload;
+    function ValorLitro(value : Real) : ITipoCombustivel; overload;
+    function ValorLitro : Real; overload;
   end;
 implementation
 
