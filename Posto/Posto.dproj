@@ -105,7 +105,17 @@
         <DCCReference Include="Interfaces\uiTipoCombustivel.pas"/>
         <DCCReference Include="Interfaces\uiTanque.pas"/>
         <DCCReference Include="Interfaces\uiBomba.pas"/>
+        <DCCReference Include="Banco\udmBanco.pas">
+            <Form>dmPosto</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Classes\uBomba.pas"/>
         <DCCReference Include="Classes\uAbastecer.pas"/>
+        <DCCReference Include="Interfaces\uiAbastecer.pas"/>
+        <DCCReference Include="Biblioteca\uExcecoes.pas"/>
+        <DCCReference Include="Classes\uTanque.pas"/>
+        <DCCReference Include="Classes\uTipoCombustivel.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

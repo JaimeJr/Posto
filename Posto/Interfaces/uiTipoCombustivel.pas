@@ -11,6 +11,8 @@ interface
 
     function ValorLitro(value : Real) : ITipoCombustivel; overload;
     function ValorLitro : Real; overload;
+
+    procedure CarregarDados;
   end;
 implementation
 

@@ -3,6 +3,7 @@ unit uPrincipal;
 interface
 
 uses
+  uiTanque, uiBomba, uiTipoCombustivel,
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Data.Win.ADODB,
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls;
@@ -32,6 +33,10 @@ type
     LabeledEdit5: TLabeledEdit;
   private
     { Private declarations }
+    FTipoCombustivel : ITipoCombustivel;
+
+    procedure CarregarTipoCombustivel;
+
   public
     { Public declarations }
   end;
@@ -41,6 +46,16 @@ var
 
 implementation
 
+uses
+  uiBanco;
+
 {$R *.dfm}
+
+{ TfrmPosto }
+
+procedure TfrmPosto.CarregarTipoCombustivel;
+begin
+  FTipoCombustivel :=
+end;
 
 end.

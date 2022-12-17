@@ -21,8 +21,6 @@ object frmPosto: TfrmPosto
     Height = 304
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 849
-    ExplicitHeight = 403
     object pnlGasolina: TPanel
       AlignWithMargins = True
       Left = 381
@@ -37,9 +35,6 @@ object frmPosto: TfrmPosto
       Caption = 'Gasolina'
       TabOrder = 1
       VerticalAlignment = taAlignTop
-      ExplicitLeft = 0
-      ExplicitTop = -5
-      ExplicitHeight = 183
       object edtPrecoLitro: TLabeledEdit
         Left = 128
         Top = 40
@@ -58,9 +53,6 @@ object frmPosto: TfrmPosto
         Align = alBottom
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitLeft = 6
-        ExplicitTop = 243
-        ExplicitWidth = 396
         object Panel3: TPanel
           Left = 0
           Top = 0
@@ -70,7 +62,6 @@ object frmPosto: TfrmPosto
           Caption = 'Bomba 1'
           TabOrder = 0
           VerticalAlignment = taAlignTop
-          ExplicitLeft = 1
           object btnAbastecerT1B2: TButton
             Left = 62
             Top = 88
@@ -81,7 +72,7 @@ object frmPosto: TfrmPosto
           end
           object LabeledEdit2: TLabeledEdit
             Left = 48
-            Top = 61
+            Top = 53
             Width = 121
             Height = 21
             EditLabel.Width = 26
@@ -99,10 +90,6 @@ object frmPosto: TfrmPosto
           Caption = 'Bomba 2'
           TabOrder = 1
           VerticalAlignment = taAlignTop
-          ExplicitLeft = 161
-          ExplicitTop = 14
-          ExplicitWidth = 186
-          ExplicitHeight = 107
           object btnAbastecerT1B1: TButton
             Left = 62
             Top = 88
@@ -113,7 +100,7 @@ object frmPosto: TfrmPosto
           end
           object LabeledEdit1: TLabeledEdit
             Left = 31
-            Top = 61
+            Top = 53
             Width = 121
             Height = 21
             EditLabel.Width = 26
@@ -132,11 +119,8 @@ object frmPosto: TfrmPosto
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitLeft = 344
-      ExplicitTop = 240
-      ExplicitWidth = 185
       object btnRelatorio: TButton
-        Left = 382
+        Left = 342
         Top = 8
         Width = 75
         Height = 25
@@ -154,9 +138,6 @@ object frmPosto: TfrmPosto
       Caption = 'Ol'#233'o Diesel'
       TabOrder = 0
       VerticalAlignment = taAlignTop
-      ExplicitLeft = 0
-      ExplicitTop = -5
-      ExplicitHeight = 183
       object LabeledEdit3: TLabeledEdit
         Left = 128
         Top = 40
@@ -175,7 +156,6 @@ object frmPosto: TfrmPosto
         Align = alBottom
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitTop = 56
         object Panel5: TPanel
           Left = 0
           Top = 0
@@ -195,7 +175,7 @@ object frmPosto: TfrmPosto
           end
           object LabeledEdit4: TLabeledEdit
             Left = 48
-            Top = 61
+            Top = 53
             Width = 121
             Height = 21
             EditLabel.Width = 26
@@ -223,7 +203,7 @@ object frmPosto: TfrmPosto
           end
           object LabeledEdit5: TLabeledEdit
             Left = 31
-            Top = 61
+            Top = 53
             Width = 121
             Height = 21
             EditLabel.Width = 26
