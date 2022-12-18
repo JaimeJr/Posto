@@ -81,6 +81,7 @@ object frmPosto: TfrmPosto
             EditLabel.Width = 26
             EditLabel.Height = 13
             EditLabel.Caption = 'Litros'
+            NumbersOnly = True
             TabOrder = 0
           end
         end
@@ -110,6 +111,7 @@ object frmPosto: TfrmPosto
             EditLabel.Width = 26
             EditLabel.Height = 13
             EditLabel.Caption = 'Litros'
+            NumbersOnly = True
             TabOrder = 0
           end
         end
@@ -188,6 +190,7 @@ object frmPosto: TfrmPosto
             EditLabel.Width = 26
             EditLabel.Height = 13
             EditLabel.Caption = 'Litros'
+            NumbersOnly = True
             TabOrder = 0
           end
         end
@@ -217,6 +220,7 @@ object frmPosto: TfrmPosto
             EditLabel.Width = 26
             EditLabel.Height = 13
             EditLabel.Caption = 'Litros'
+            NumbersOnly = True
             TabOrder = 0
           end
         end
