@@ -67,6 +67,9 @@ end;
 
 procedure TAbastecer.GravarAbastecimento;
 begin
+  FValor := FLitro * FBomba.Tanque.TipoCombustivel.ValorLitro;
+  FValor := FValor * (1 + (FICMS / 100));
+
   dmPosto.NovoAbastecimento(FDT_Abastecimento, FValor, FLitro, FICMS, FBomba);
 end;
 

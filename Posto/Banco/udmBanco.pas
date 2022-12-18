@@ -20,7 +20,6 @@ type
     qryValorLitroVALOR_LITRO: TFloatField;
     updAbastecimento: TFDUpdateSQL;
     qryAbastecimento: TFDQuery;
-    qryAbastecimentoID: TIntegerField;
     qryAbastecimentoDT_ABASTECIMENTO: TDateField;
     qryAbastecimentoVALOR: TSingleField;
     qryAbastecimentoLITROS: TSingleField;
@@ -28,6 +27,10 @@ type
     qryAbastecimentoBOMBA: TIntegerField;
     qryTipoCombustivel: TFDQuery;
     updTipoCombustivel: TFDUpdateSQL;
+    qryTipoCombustivelDESCRICAO: TStringField;
+    qryTipoCombustivelVALOR_LITRO: TSingleField;
+    qryTipoCombustivelICMS: TSingleField;
+    qryTipoCombustivelID: TIntegerField;
   private
     { Private declarations }
   public
@@ -53,30 +56,32 @@ implementation
 { TdmPosto }
 
 procedure TdmPosto.NovoAbastecimento(dtAbastecimento: TDateTime; valor, litros, ICMS: Real; Bomba: IBomba);
+var
+  qryInsert : TFDQuery;
 begin
-  
+  qryInsert := TFDQuery.Create(nil);
+  qryInsert.Connection := FDConnection1;
+
+  qryInsert.SQL.Add('INSERT INTO ABASTECIMENTO                                       ');
+  qryInsert.SQL.Add('            (DT_ABASTECIMENTO, VALOR, LITROS, ICMS, BOMBA)      ');
+  qryInsert.SQL.Add('     VALUES (:DT_ABASTECIMENTO, :VALOR, :LITROS, :ICMS, :BOMBA) ');
+
   try
-    if not qryAbastecimento.Active then
-      qryAbastecimento.Open;
+    qryInsert.ParamByName('DT_ABASTECIMENTO').Value := dtAbastecimento;
+    qryInsert.ParamByName('VALOR').Value := valor;
+    qryInsert.ParamByName('LITROS').Value := litros;
+    qryInsert.ParamByName('ICMS').Value := ICMS;
+    qryInsert.ParamByName('BOMBA').Value := Bomba.ID;
 
-    qryAbastecimento.Append;
-
-    qryAbastecimentoDT_ABASTECIMENTO.AsDateTime := dtAbastecimento;
-    qryAbastecimentoVALOR.AsFloat := valor;
-    qryAbastecimentoLITROS.AsFloat := litros;
-    qryAbastecimentoICMS.AsFloat := ICMS;
-    qryAbastecimentoBOMBA.AsInteger := Bomba.ID;
-
-    qryAbastecimento.ApplyUpdates;
-    qryAbastecimento.CommitUpdates;
-    FDConnection1.Commit; 
-  except on E: Exception do    
-    begin  
-      qryAbastecimento.Cancel;
+    qryInsert.ExecSQL;
+    FDConnection1.Commit;
+  except on E: Exception do
+    begin
+      qryInsert.Cancel;
       FDConnection1.Rollback;
       raise;
     end;    
-  end; 
+  end;
 end;
 
 function TdmPosto.VerificarNovoIDAbastecimento: Integer;

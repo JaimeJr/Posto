@@ -9,7 +9,7 @@ object dmPosto: TdmPosto
       'Password=123'
       'DriverID=FB')
     Connected = True
-    Left = 416
+    Left = 400
     Top = 8
   end
   object qryNovoID: TFDQuery
@@ -59,18 +59,13 @@ object dmPosto: TdmPosto
   end
   object qryAbastecimento: TFDQuery
     Connection = FDConnection1
+    UpdateOptions.AssignedValues = [uvRefreshMode, uvCheckRequired]
     UpdateObject = updAbastecimento
     SQL.Strings = (
       'SELECT *'
       '  FROM ABASTECIMENTO')
     Left = 40
     Top = 136
-    object qryAbastecimentoID: TIntegerField
-      FieldName = 'ID'
-      Origin = 'ID'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
     object qryAbastecimentoDT_ABASTECIMENTO: TDateField
       FieldName = 'DT_ABASTECIMENTO'
       Origin = 'DT_ABASTECIMENTO'
@@ -104,6 +99,28 @@ object dmPosto: TdmPosto
       '  FROM TIPO_COMBUSTIVEL')
     Left = 40
     Top = 8
+    object qryTipoCombustivelID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryTipoCombustivelDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      Required = True
+      Size = 50
+    end
+    object qryTipoCombustivelVALOR_LITRO: TSingleField
+      FieldName = 'VALOR_LITRO'
+      Origin = 'VALOR_LITRO'
+      Required = True
+    end
+    object qryTipoCombustivelICMS: TSingleField
+      FieldName = 'ICMS'
+      Origin = 'ICMS'
+      Required = True
+    end
   end
   object updTipoCombustivel: TFDUpdateSQL
     Connection = FDConnection1

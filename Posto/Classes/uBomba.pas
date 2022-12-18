@@ -43,7 +43,7 @@ begin
                            Bomba(Self).
                            DT_Abastecimento(Now).
                            Litro(litros).
-                           ICMS(13);
+                           ICMS(FTanque.TipoCombustivel.ICMS);
 
   novoAbastecimento.GravarAbastecimento;
 end;
