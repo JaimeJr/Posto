@@ -11,6 +11,8 @@ interface
 
     function TipoCombustivel(value : ITipoCombustivel) : ITanque; overload;
     function TipoCombustivel : ITipoCombustivel; overload;
+
+    function Carregar(tanqueID : Integer ; tipoCombustivel : ITipoCombustivel) : ITanque;
   end;
 
 implementation

@@ -9,18 +9,20 @@ uses
    private
      FID : Integer;
      FTanque : ITanque;
-    public
-      function ID(value : Integer) : IBomba; overload;
-      function ID : Integer; overload;
 
-      function Tanque(value : ITanque) : IBomba; overload;
-      function Tanque : ITanque; overload;
+     function ID(value : Integer) : IBomba; overload;
+     function Tanque(value : ITanque) : IBomba; overload;
+   public
+     function ID : Integer; overload;
+     function Tanque : ITanque; overload;
 
-      procedure Abastecer(litros : Real);
+     procedure Abastecer(litros : Real);
 
-      class function New : IBomba;
+     class function New : IBomba;
 
-      constructor Create;
+     constructor Create;
+
+     function Carregar(bombaID : Integer ; tanque : ITanque) : IBomba;
   end;
 
 implementation
@@ -35,7 +37,6 @@ uses
 procedure TBomba.Abastecer(litros: Real);
 var
   novoAbastecimento : IAbastecer;
-  valorAbastecido : Real;
 begin
   novoAbastecimento := TAbastecer.
                          New.
@@ -45,6 +46,29 @@ begin
                            ICMS(13);
 
   novoAbastecimento.GravarAbastecimento;
+end;
+
+function TBomba.Carregar(bombaID: Integer ; tanque : ITanque): IBomba;
+var
+  qryCarregar : TFDQuery;
+begin
+  qryCarregar := TFDQuery.Create(nil);
+  try
+    qryCarregar.Connection := dmPosto.FDConnection1;
+    qryCarregar.SQL.Add('SELECT *                ');
+    qryCarregar.SQL.Add('  FROM BOMBA            ');
+    qryCarregar.SQL.Add(' WHERE ID = :ID         ');
+    qryCarregar.ParamByName('ID').AsInteger := bombaID;
+    qryCarregar.Open;
+
+    qryCarregar.First;
+
+    Result := ID(qryCarregar.FieldByName('ID').AsInteger).
+              Tanque(tanque);
+
+  finally
+    qryCarregar.Free;
+  end;
 end;
 
 constructor TBomba.Create;

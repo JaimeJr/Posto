@@ -26,13 +26,13 @@ type
     qryAbastecimentoLITROS: TSingleField;
     qryAbastecimentoICMS: TSingleField;
     qryAbastecimentoBOMBA: TIntegerField;
+    qryTipoCombustivel: TFDQuery;
+    updTipoCombustivel: TFDUpdateSQL;
   private
     { Private declarations }
   public
     function VerificarNovoIDAbastecimento : Integer;
-    function CarregarTipoCombustivel(ID : Integer) : ITipoCombustivel;
-    procedure NovoAbastecimento(ID : Integer ;
-                                dtAbastecimento : TDateTime;
+    procedure NovoAbastecimento(dtAbastecimento : TDateTime;
                                 valor : Real;
                                 litros : Real;
                                 ICMS : Real;
@@ -52,15 +52,13 @@ implementation
 
 { TdmPosto }
 
-function TdmPosto.CarregarTipoCombustivel(ID : Integer): ITipoCombustivel;
+procedure TdmPosto.NovoAbastecimento(dtAbastecimento: TDateTime; valor, litros, ICMS: Real; Bomba: IBomba);
 begin
-
-end;
-
-procedure TdmPosto.NovoAbastecimento(ID: Integer;
-  dtAbastecimento: TDateTime; valor, litros, ICMS: Real; Bomba: IBomba);
-begin
+  
   try
+    if not qryAbastecimento.Active then
+      qryAbastecimento.Open;
+
     qryAbastecimento.Append;
 
     qryAbastecimentoDT_ABASTECIMENTO.AsDateTime := dtAbastecimento;
@@ -71,11 +69,14 @@ begin
 
     qryAbastecimento.ApplyUpdates;
     qryAbastecimento.CommitUpdates;
-    FDConnection1.Commit;
-  except
-    qryAbastecimento.Cancel;
-    FDConnection1.Rollback;
-  end;
+    FDConnection1.Commit; 
+  except on E: Exception do    
+    begin  
+      qryAbastecimento.Cancel;
+      FDConnection1.Rollback;
+      raise;
+    end;    
+  end; 
 end;
 
 function TdmPosto.VerificarNovoIDAbastecimento: Integer;

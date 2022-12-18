@@ -12,7 +12,10 @@ interface
     function ValorLitro(value : Real) : ITipoCombustivel; overload;
     function ValorLitro : Real; overload;
 
-    procedure CarregarDados;
+    function ICMS(value : Real) : ITipoCombustivel; overload;
+    function ICMS : Real; overload;
+
+    function Carregar(tipoID : Integer) : ITipoCombustivel;
   end;
 implementation
 

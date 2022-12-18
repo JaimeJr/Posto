@@ -12,14 +12,15 @@ uses
   uiAbastecer in 'Interfaces\uiAbastecer.pas',
   uExcecoes in 'Biblioteca\uExcecoes.pas',
   uTanque in 'Classes\uTanque.pas',
-  uTipoCombustivel in 'Classes\uTipoCombustivel.pas';
+  uTipoCombustivel in 'Classes\uTipoCombustivel.pas',
+  uiBanco in 'Interfaces\uiBanco.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TfrmPosto, frmPosto);
   Application.CreateForm(TdmPosto, dmPosto);
+  Application.CreateForm(TfrmPosto, frmPosto);
   Application.Run;
 end.

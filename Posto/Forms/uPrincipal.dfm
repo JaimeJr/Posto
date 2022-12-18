@@ -12,6 +12,7 @@ object frmPosto: TfrmPosto
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object pnlFundo: TPanel
@@ -35,7 +36,7 @@ object frmPosto: TfrmPosto
       Caption = 'Gasolina'
       TabOrder = 1
       VerticalAlignment = taAlignTop
-      object edtPrecoLitro: TLabeledEdit
+      object edtPrecoLitroGas: TLabeledEdit
         Left = 128
         Top = 40
         Width = 121
@@ -43,7 +44,7 @@ object frmPosto: TfrmPosto
         EditLabel.Width = 70
         EditLabel.Height = 13
         EditLabel.Caption = 'Pre'#231'o por Litro'
-        TabOrder = 0
+        TabOrder = 1
       end
       object Panel4: TPanel
         Left = 0
@@ -52,7 +53,7 @@ object frmPosto: TfrmPosto
         Height = 127
         Align = alBottom
         BevelOuter = bvNone
-        TabOrder = 1
+        TabOrder = 2
         object Panel3: TPanel
           Left = 0
           Top = 0
@@ -110,6 +111,14 @@ object frmPosto: TfrmPosto
           end
         end
       end
+      object btnAtualizarGasolina: TButton
+        Left = 255
+        Top = 38
+        Width = 75
+        Height = 25
+        Caption = 'Atualizar'
+        TabOrder = 0
+      end
     end
     object pnlRelatorio: TPanel
       Left = 1
@@ -138,7 +147,7 @@ object frmPosto: TfrmPosto
       Caption = 'Ol'#233'o Diesel'
       TabOrder = 0
       VerticalAlignment = taAlignTop
-      object LabeledEdit3: TLabeledEdit
+      object edtPrecoLitroOleo: TLabeledEdit
         Left = 128
         Top = 40
         Width = 121
@@ -146,7 +155,7 @@ object frmPosto: TfrmPosto
         EditLabel.Width = 70
         EditLabel.Height = 13
         EditLabel.Caption = 'Pre'#231'o por Litro'
-        TabOrder = 0
+        TabOrder = 1
       end
       object Panel2: TPanel
         Left = 0
@@ -155,7 +164,7 @@ object frmPosto: TfrmPosto
         Height = 127
         Align = alBottom
         BevelOuter = bvNone
-        TabOrder = 1
+        TabOrder = 2
         object Panel5: TPanel
           Left = 0
           Top = 0
@@ -165,15 +174,16 @@ object frmPosto: TfrmPosto
           Caption = 'Bomba 1'
           TabOrder = 0
           VerticalAlignment = taAlignTop
-          object Button1: TButton
+          object btnBombaGasUm: TButton
             Left = 62
             Top = 88
             Width = 75
             Height = 25
             Caption = 'Abastecer'
             TabOrder = 1
+            OnClick = btnBombaGasUmClick
           end
-          object LabeledEdit4: TLabeledEdit
+          object edtLitrosOleoUm: TLabeledEdit
             Left = 48
             Top = 53
             Width = 121
@@ -193,15 +203,16 @@ object frmPosto: TfrmPosto
           Caption = 'Bomba 2'
           TabOrder = 1
           VerticalAlignment = taAlignTop
-          object Button2: TButton
+          object btnBombaGasDois: TButton
             Left = 62
             Top = 88
             Width = 75
             Height = 25
             Caption = 'Abastecer'
             TabOrder = 1
+            OnClick = btnBombaGasDoisClick
           end
-          object LabeledEdit5: TLabeledEdit
+          object edtLitrosOleoDois: TLabeledEdit
             Left = 31
             Top = 53
             Width = 121
@@ -212,6 +223,14 @@ object frmPosto: TfrmPosto
             TabOrder = 0
           end
         end
+      end
+      object btnAtualizarOleo: TButton
+        Left = 255
+        Top = 38
+        Width = 75
+        Height = 25
+        Caption = 'Atualizar'
+        TabOrder = 0
       end
     end
   end

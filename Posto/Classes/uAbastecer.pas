@@ -3,8 +3,8 @@ unit uAbastecer;
 interface
 
 uses
-  uiAbastecer, uiBomba, uBanco;
-  type TAbastecer = class(TInterfacedObject, IAbastecer, IBanco)
+  uiAbastecer, uiBomba;
+  type TAbastecer = class(TInterfacedObject, IAbastecer)
     private
       FBomba : IBomba;
       FDT_Abastecimento : TDateTime;
@@ -50,12 +50,8 @@ begin
 end;
 
 constructor TAbastecer.Create;
-var
-  novoID : Integer;
 begin
   inherited;
-  novoID := dmPosto.VerificarNovoIDAbastecimento;
-  ID(novoID);
 end;
 
 function TAbastecer.DT_Abastecimento: TDateTime;
@@ -71,7 +67,7 @@ end;
 
 procedure TAbastecer.GravarAbastecimento;
 begin
-  dmPosto.NovoAbastecimento(FID, FDT_Abastecimento, FValor, FLitro, FICMS, FBomba);
+  dmPosto.NovoAbastecimento(FDT_Abastecimento, FValor, FLitro, FICMS, FBomba);
 end;
 
 function TAbastecer.ICMS(value: Real): IAbastecer;

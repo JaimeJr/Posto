@@ -1,7 +1,7 @@
 object dmPosto: TdmPosto
   OldCreateOrder = False
-  Height = 165
-  Width = 215
+  Height = 368
+  Width = 459
   object FDConnection1: TFDConnection
     Params.Strings = (
       'User_Name=SYSDBA'
@@ -9,7 +9,7 @@ object dmPosto: TdmPosto
       'Password=123'
       'DriverID=FB')
     Connected = True
-    Left = 88
+    Left = 416
     Top = 8
   end
   object qryNovoID: TFDQuery
@@ -17,8 +17,8 @@ object dmPosto: TdmPosto
     SQL.Strings = (
       'SELECT MAX(ID) + 1 AS NOVOID'
       '  FROM ABASTECIMENTO')
-    Left = 8
-    Top = 8
+    Left = 296
+    Top = 232
     object qryNovoIDNOVOID: TLargeintField
       AutoGenerateValue = arDefault
       FieldName = 'NOVOID'
@@ -33,8 +33,8 @@ object dmPosto: TdmPosto
       'SELECT VALOR_LITRO'
       '  FROM TIPO_COMBUSTIVEL'
       ' WHERE ID = :ID')
-    Left = 8
-    Top = 56
+    Left = 296
+    Top = 280
     ParamData = <
       item
         Name = 'ID'
@@ -54,8 +54,8 @@ object dmPosto: TdmPosto
       'INSERT INTO ABASTECIMENTO '
       '            (DT_ABASTECIMENTO, VALOR, LITROS, ICMS, BOMBA)'
       '     VALUES (:DT_ABASTECIMENTO, :VALOR, :LITROS, :ICMS, :BOMBA)')
-    Left = 88
-    Top = 56
+    Left = 40
+    Top = 176
   end
   object qryAbastecimento: TFDQuery
     Connection = FDConnection1
@@ -63,8 +63,8 @@ object dmPosto: TdmPosto
     SQL.Strings = (
       'SELECT *'
       '  FROM ABASTECIMENTO')
-    Left = 88
-    Top = 104
+    Left = 40
+    Top = 136
     object qryAbastecimentoID: TIntegerField
       FieldName = 'ID'
       Origin = 'ID'
@@ -96,5 +96,22 @@ object dmPosto: TdmPosto
       Origin = 'BOMBA'
       Required = True
     end
+  end
+  object qryTipoCombustivel: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT *'
+      '  FROM TIPO_COMBUSTIVEL')
+    Left = 40
+    Top = 8
+  end
+  object updTipoCombustivel: TFDUpdateSQL
+    Connection = FDConnection1
+    ModifySQL.Strings = (
+      'UPDATE TIPO_COMBUSTIVEL'
+      '   SET VALOR_LITRO = :VALOR_LITRO'
+      ' WHERE ID = :ID')
+    Left = 40
+    Top = 56
   end
 end

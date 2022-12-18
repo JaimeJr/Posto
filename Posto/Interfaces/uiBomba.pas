@@ -13,6 +13,8 @@ interface
     function Tanque : ITanque; overload;
 
     procedure Abastecer(litros : Real);
+
+    function Carregar(bombaID : Integer ; tanque : ITanque) : IBomba;
   end;
 implementation
 
