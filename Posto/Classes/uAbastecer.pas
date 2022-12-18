@@ -70,7 +70,11 @@ begin
   FValor := FLitro * FBomba.Tanque.TipoCombustivel.ValorLitro;
   FValor := FValor * (1 + (FICMS / 100));
 
-  dmPosto.NovoAbastecimento(FDT_Abastecimento, FValor, FLitro, FICMS, FBomba);
+  try
+    dmPosto.NovoAbastecimento(FDT_Abastecimento, FValor, FLitro, FICMS, FBomba);
+  except
+    raise;
+  end;
 end;
 
 function TAbastecer.ICMS(value: Real): IAbastecer;

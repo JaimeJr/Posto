@@ -6,6 +6,8 @@ interface
   type
     EPostoException = class(Exception);
 
+    ERelatorioException = class(EPostoException);
+
     EAbastecerException = class(EPostoException);
     ELitroInvalidoException = class(EPostoException);
     EValorInvalidoException = class(EAbastecerException);

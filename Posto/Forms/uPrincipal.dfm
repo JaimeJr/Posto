@@ -44,7 +44,8 @@ object frmPosto: TfrmPosto
         EditLabel.Width = 70
         EditLabel.Height = 13
         EditLabel.Caption = 'Pre'#231'o por Litro'
-        TabOrder = 1
+        Enabled = False
+        TabOrder = 0
       end
       object Panel4: TPanel
         Left = 0
@@ -53,25 +54,26 @@ object frmPosto: TfrmPosto
         Height = 127
         Align = alBottom
         BevelOuter = bvNone
-        TabOrder = 2
+        TabOrder = 1
         object Panel3: TPanel
           Left = 0
           Top = 0
           Width = 193
           Height = 127
           Align = alLeft
-          Caption = 'Bomba 1'
+          Caption = 'Bomba 3'
           TabOrder = 0
           VerticalAlignment = taAlignTop
-          object btnAbastecerT1B2: TButton
-            Left = 62
+          object btnAbastecerGasUm: TButton
+            Left = 64
             Top = 88
             Width = 75
             Height = 25
             Caption = 'Abastecer'
             TabOrder = 1
+            OnClick = btnAbastecerGasUmClick
           end
-          object LabeledEdit2: TLabeledEdit
+          object edtLitrosGasUm: TLabeledEdit
             Left = 48
             Top = 53
             Width = 121
@@ -88,18 +90,19 @@ object frmPosto: TfrmPosto
           Width = 184
           Height = 127
           Align = alClient
-          Caption = 'Bomba 2'
+          Caption = 'Bomba 4'
           TabOrder = 1
           VerticalAlignment = taAlignTop
-          object btnAbastecerT1B1: TButton
+          object btnAbastecerGasDois: TButton
             Left = 62
             Top = 88
             Width = 75
             Height = 25
             Caption = 'Abastecer'
             TabOrder = 1
+            OnClick = btnAbastecerGasDoisClick
           end
-          object LabeledEdit1: TLabeledEdit
+          object edtLitrosGasDois: TLabeledEdit
             Left = 31
             Top = 53
             Width = 121
@@ -110,14 +113,6 @@ object frmPosto: TfrmPosto
             TabOrder = 0
           end
         end
-      end
-      object btnAtualizarGasolina: TButton
-        Left = 255
-        Top = 38
-        Width = 75
-        Height = 25
-        Caption = 'Atualizar'
-        TabOrder = 0
       end
     end
     object pnlRelatorio: TPanel
@@ -135,6 +130,7 @@ object frmPosto: TfrmPosto
         Height = 25
         Caption = 'Relat'#243'rio'
         TabOrder = 0
+        OnClick = btnRelatorioClick
       end
     end
     object pnlOleoDiesel: TPanel
@@ -155,7 +151,8 @@ object frmPosto: TfrmPosto
         EditLabel.Width = 70
         EditLabel.Height = 13
         EditLabel.Caption = 'Pre'#231'o por Litro'
-        TabOrder = 1
+        Enabled = False
+        TabOrder = 0
       end
       object Panel2: TPanel
         Left = 0
@@ -164,7 +161,7 @@ object frmPosto: TfrmPosto
         Height = 127
         Align = alBottom
         BevelOuter = bvNone
-        TabOrder = 2
+        TabOrder = 1
         object Panel5: TPanel
           Left = 0
           Top = 0
@@ -174,14 +171,14 @@ object frmPosto: TfrmPosto
           Caption = 'Bomba 1'
           TabOrder = 0
           VerticalAlignment = taAlignTop
-          object btnBombaGasUm: TButton
-            Left = 62
+          object btnAbastecerOleoUm: TButton
+            Left = 67
             Top = 88
             Width = 75
             Height = 25
             Caption = 'Abastecer'
             TabOrder = 1
-            OnClick = btnBombaGasUmClick
+            OnClick = btnAbastecerOleoUmClick
           end
           object edtLitrosOleoUm: TLabeledEdit
             Left = 48
@@ -203,14 +200,14 @@ object frmPosto: TfrmPosto
           Caption = 'Bomba 2'
           TabOrder = 1
           VerticalAlignment = taAlignTop
-          object btnBombaGasDois: TButton
-            Left = 62
+          object btnAbastecerOleoDois: TButton
+            Left = 54
             Top = 88
             Width = 75
             Height = 25
             Caption = 'Abastecer'
             TabOrder = 1
-            OnClick = btnBombaGasDoisClick
+            OnClick = btnAbastecerOleoDoisClick
           end
           object edtLitrosOleoDois: TLabeledEdit
             Left = 31
@@ -223,14 +220,6 @@ object frmPosto: TfrmPosto
             TabOrder = 0
           end
         end
-      end
-      object btnAtualizarOleo: TButton
-        Left = 255
-        Top = 38
-        Width = 75
-        Height = 25
-        Caption = 'Atualizar'
-        TabOrder = 0
       end
     end
   end

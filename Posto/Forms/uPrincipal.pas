@@ -17,25 +17,26 @@ type
     edtPrecoLitroGas: TLabeledEdit;
     Panel4: TPanel;
     Panel3: TPanel;
-    btnAbastecerT1B2: TButton;
+    btnAbastecerGasUm: TButton;
     pnlBomba2: TPanel;
-    btnAbastecerT1B1: TButton;
-    LabeledEdit1: TLabeledEdit;
-    LabeledEdit2: TLabeledEdit;
+    btnAbastecerGasDois: TButton;
+    edtLitrosGasDois: TLabeledEdit;
+    edtLitrosGasUm: TLabeledEdit;
     pnlOleoDiesel: TPanel;
     edtPrecoLitroOleo: TLabeledEdit;
     Panel2: TPanel;
     Panel5: TPanel;
-    btnBombaGasUm: TButton;
+    btnAbastecerOleoUm: TButton;
     edtLitrosOleoUm: TLabeledEdit;
     Panel6: TPanel;
-    btnBombaGasDois: TButton;
+    btnAbastecerOleoDois: TButton;
     edtLitrosOleoDois: TLabeledEdit;
-    btnAtualizarOleo: TButton;
-    btnAtualizarGasolina: TButton;
     procedure FormCreate(Sender: TObject);
-    procedure btnBombaGasUmClick(Sender: TObject);
-    procedure btnBombaGasDoisClick(Sender: TObject);
+    procedure btnAbastecerOleoUmClick(Sender: TObject);
+    procedure btnAbastecerOleoDoisClick(Sender: TObject);
+    procedure btnAbastecerGasUmClick(Sender: TObject);
+    procedure btnAbastecerGasDoisClick(Sender: TObject);
+    procedure btnRelatorioClick(Sender: TObject);
   private
     { Private declarations }
     FGasolina : ITipoCombustivel;
@@ -55,6 +56,8 @@ type
     procedure CarregarBomba;
     procedure CarregarClasses;
 
+    procedure GerarRelatorio;
+
   public
     { Public declarations }
   end;
@@ -65,39 +68,54 @@ var
 implementation
 
 uses
-  udmBanco;
+  udmBanco, uAbastecimento;
 
 {$R *.dfm}
 
 { TfrmPosto }
 
-procedure TfrmPosto.btnBombaGasDoisClick(Sender: TObject);
+procedure TfrmPosto.btnAbastecerGasDoisClick(Sender: TObject);
+begin
+  FBombaGasDois.Abastecer(StrToFloat(edtLitrosGasDois.Text));
+end;
+
+procedure TfrmPosto.btnAbastecerGasUmClick(Sender: TObject);
+begin
+  FBombaGasUm.Abastecer(StrToFloat(edtLitrosGasUm.Text));
+end;
+
+procedure TfrmPosto.btnAbastecerOleoDoisClick(Sender: TObject);
 begin
   FBombaOleoDois.Abastecer(StrToFloat(edtLitrosOleoDois.Text));
 end;
 
-procedure TfrmPosto.btnBombaGasUmClick(Sender: TObject);
+procedure TfrmPosto.btnAbastecerOleoUmClick(Sender: TObject);
 begin
   FBombaOleoUm.Abastecer(StrToFloat(edtLitrosOleoUm.Text));
+end;
+
+procedure TfrmPosto.btnRelatorioClick(Sender: TObject);
+begin
+  GerarRelatorio;
 end;
 
 procedure TfrmPosto.CarregarBomba;
 begin
   FBombaOleoUm := TBomba.
                     New.
-                      Carregar(2, FTanqueOleo);
+                      Carregar(1, FTanqueOleo);
 
   FBombaOleoDois := TBomba.
                       New.
-                        Carregar(4, FTanqueOleo);
+                        Carregar(2, FTanqueOleo);
 
   FBombaGasUm := TBomba.
                    New.
-                     Carregar(1, FTanqueGasolina);
+                     Carregar(3, FTanqueGasolina);
 
   FBombaGasDois := TBomba.
                      New.
-                       Carregar(3, FTanqueGasolina);
+                       Carregar(4, FTanqueGasolina);
 end;
 
 procedure TfrmPosto.CarregarClasses;
@@ -135,6 +153,19 @@ end;
 procedure TfrmPosto.FormCreate(Sender: TObject);
 begin
   CarregarClasses;
+end;
+
+procedure TfrmPosto.GerarRelatorio;
+var
+  frmRelatorio : TfrmRelAbastecimento;
+begin
+  try
+    frmRelatorio := TfrmRelAbastecimento.Create(Self);
+    frmRelatorio.CarregarRelatório;
+    frmRelatorio.rlrAbastecimento.Print;
+  finally
+    FreeAndNil(frmRelatorio);
+  end;
 end;
 
 end.

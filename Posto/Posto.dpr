@@ -13,7 +13,8 @@ uses
   uExcecoes in 'Biblioteca\uExcecoes.pas',
   uTanque in 'Classes\uTanque.pas',
   uTipoCombustivel in 'Classes\uTipoCombustivel.pas',
-  uiBanco in 'Interfaces\uiBanco.pas';
+  uiBanco in 'Interfaces\uiBanco.pas',
+  uAbastecimento in 'Relatorios\uAbastecimento.pas' {frmRelAbastecimento};
 
 {$R *.res}
 
